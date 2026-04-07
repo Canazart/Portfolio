@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Leonardo Canazart — Engenharia de Minas · CCO · Inteligência Operacional</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#050c06;
+  --panel:#0b1a0d;
+  --panel2:#0f2112;
+  --border:#1a3a1e;
+  --border2:#224426;
+  --accent:#3db554;
+  --accent2:#5cd96e;
+  --text:#edf5e8;
+  --muted:#6b9474;
+  --muted2:#4a6b52;
+  --yellow:#dba520;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  font-weight:300;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* ── SCAN LINE (isolado, sem cobrir conteúdo) ── */
+.scanline{
+  position:fixed;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent2),transparent);
+  animation:scanv 8s ease-in-out infinite;
+  pointer-events:none;z-index:999;opacity:.35;
+}
+@keyframes scanv{0%{top:0}100%{top:100vh}}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  padding:16px 60px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:#050c06ee;
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+  transition:background .3s;
+}
+.nav-logo{
+  font-family:'Rajdhani',sans-serif;
+  font-weight:700;font-size:20px;
+  letter-spacing:4px;color:var(--accent2);
+  text-decoration:none;
+}
+.nav-links{display:flex;gap:28px}
+.nav-links a{
+  font-family:'Share Tech Mono',monospace;
+  font-size:9px;letter-spacing:3px;
+  color:var(--muted);text-decoration:none;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--accent2)}
+
+/* ── HERO ── */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:120px 60px 80px;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 70% 60% at 85% 40%,#0e2e14 0%,transparent 65%),
+    radial-gradient(ellipse 50% 80% at 10% 60%,#081409 0%,transparent 55%),
+    var(--bg);
+}
+.hero-dots{
+  position:absolute;inset:0;z-index:0;
+  background-image:radial-gradient(circle,#3db55420 1px,transparent 1px);
+  background-size:32px 32px;
+}
+.hero-lines{
+  position:absolute;inset:0;z-index:0;
+  background-image:
+    linear-gradient(115deg,#3db55406 1px,transparent 1px),
+    linear-gradient(65deg,#3db55406 1px,transparent 1px);
+  background-size:70px 70px;
+}
+.hero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;width:100%}
+
+.hero-eyebrow{
+  font-family:'Share Tech Mono',monospace;
+  font-size:10px;letter-spacing:5px;
+  color:var(--accent);margin-bottom:28px;
+  display:flex;align-items:center;gap:14px;
+}
+.hero-eyebrow::before{content:'';width:40px;height:1px;background:linear-gradient(90deg,transparent,var(--accent))}
+
+.hero-name{
+  font-family:'Rajdhani',sans-serif;
+  font-size:clamp(56px,8vw,96px);font-weight:700;
+  line-height:.92;letter-spacing:-1px;
+  color:var(--text);margin-bottom:20px;
+}
+.hero-name span{color:var(--accent2);display:block}
+
+.hero-tagline{
+  font-family:'Rajdhani',sans-serif;
+  font-size:clamp(13px,1.8vw,17px);letter-spacing:3px;
+  color:var(--muted);font-weight:500;margin-bottom:48px;
+  display:flex;align-items:center;gap:16px;
+}
+.hero-tagline::after{content:'';flex:0 0 60px;height:1px;background:linear-gradient(90deg,var(--border2),transparent)}
+
+.hero-cards{display:flex;gap:0;width:fit-content;border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:52px;box-shadow:0 4px 40px #00000050}
+.hero-card{padding:20px 32px;border-right:1px solid var(--border);position:relative}
+.hero-card:last-child{border-right:none}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.4}
+.hc-label{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:3px;color:var(--muted2);margin-bottom:4px}
+.hc-value{font-family:'Rajdhani',sans-serif;font-size:26px;font-weight:700;color:var(--text);line-height:1}
+.hc-value em{font-style:normal;font-size:11px;color:var(--muted);font-family:'Share Tech Mono',monospace;margin-left:3px}
+
+.hero-cta{display:flex;gap:14px;align-items:center}
+.btn-primary{
+  font-family:'Rajdhani',sans-serif;font-weight:600;font-size:13px;letter-spacing:3px;
+  padding:13px 30px;background:var(--accent);color:#050c06;
+  border:none;border-radius:2px;cursor:pointer;text-decoration:none;
+  display:inline-flex;align-items:center;gap:10px;
+  transition:background .2s,box-shadow .2s;
+}
+.btn-primary:hover{background:var(--accent2);box-shadow:0 0 28px #3db55440}
+.btn-ghost{
+  font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:3px;
+  padding:13px 22px;background:transparent;color:var(--muted);
+  border:1px solid var(--border2);border-radius:2px;cursor:pointer;text-decoration:none;
+  transition:border-color .2s,color .2s;
+}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* CUBE */
+.hero-cube{
+  position:absolute;right:60px;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:14px;
+  animation:float 6s ease-in-out infinite;
+  z-index:2;
+}
+@keyframes float{0%,100%{transform:translateY(-50%) translateY(0)}50%{transform:translateY(-50%) translateY(-14px)}}
+.cube-label{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:4px;color:var(--muted2);text-align:center}
+
+/* ── DIVIDER ── */
+.divider{height:1px;max-width:1200px;margin:0 auto;background:linear-gradient(90deg,transparent,var(--border2),transparent)}
+
+/* ── SECTIONS ── */
+.section{padding:90px 60px;max-width:1200px;margin:0 auto}
+.section-full{padding:90px 60px}
+.section-inner{max-width:1200px;margin:0 auto}
+
+.sec-label{
+  font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:5px;
+  color:var(--accent);margin-bottom:10px;
+  display:flex;align-items:center;gap:12px;
+}
+.sec-label::before{content:'';width:20px;height:1px;background:var(--accent)}
+.sec-title{
+  font-family:'Rajdhani',sans-serif;font-size:clamp(32px,4vw,52px);font-weight:700;
+  color:var(--text);line-height:1;margin-bottom:56px;letter-spacing:-.5px;
+}
+.sec-title span{color:var(--accent2)}
+
+/* ── SOLUTIONS ── */
+.sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:40px}
+.sol-card{background:var(--panel);padding:36px;transition:background .3s}
+.sol-card:hover{background:var(--panel2)}
+.sol-card+.sol-card{border-left:0}
+.sol-name{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;color:var(--text);margin-bottom:12px;letter-spacing:1px}
+.sol-desc{font-size:13px;line-height:1.8;color:#aec8b2}
+
+.sol-bottom{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.sol-box{background:var(--panel);border:1px solid var(--border);border-radius:4px;padding:32px;position:relative;overflow:hidden}
+.sol-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.5}
+.sol-box-label{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:4px;color:var(--accent);margin-bottom:16px}
+.int-item{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.int-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);flex-shrink:0}
+.int-text{font-size:13px;color:#bdd4c0}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.about-text p{font-size:15px;line-height:1.8;color:#bdd4c0;margin-bottom:18px}
+.about-text p strong{color:var(--accent2);font-weight:500}
+
+.skills-list{display:flex;flex-direction:column;gap:0}
+.skill-row{display:flex;align-items:center;gap:14px;padding:15px 0;border-bottom:1px solid var(--border)}
+.skill-row:first-child{border-top:1px solid var(--border)}
+.skill-name{font-family:'Rajdhani',sans-serif;font-size:13px;letter-spacing:1px;color:var(--muted);font-weight:500;flex:0 0 210px}
+.skill-bar{flex:1;height:2px;background:var(--border);border-radius:2px;overflow:hidden}
+.skill-fill{height:100%;background:var(--accent);border-radius:2px;animation:barfill 1.4s ease-out forwards;width:0}
+@keyframes barfill{to{width:var(--w)}}
+.skill-level{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:2px;white-space:nowrap}
+
+/* ── EXPERIENCE ── */
+.exp-wrap{position:relative;padding-left:32px}
+.exp-wrap::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;background:linear-gradient(180deg,var(--accent),var(--border),transparent)}
+.exp-item{position:relative;margin-bottom:56px}
+.exp-item::before{content:'';position:absolute;left:-36px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 16px var(--accent)}
+.exp-meta{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--muted2);margin-bottom:8px;display:flex;align-items:center;gap:14px}
+.exp-badge{padding:3px 10px;border:1px solid var(--border2);border-radius:2px;color:var(--accent);font-size:8px;letter-spacing:2px}
+.exp-badge.active{background:#3db55415;border-color:var(--accent);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 #3db55430}50%{box-shadow:0 0 0 6px #3db55400}}
+.exp-company{font-family:'Rajdhani',sans-serif;font-size:26px;font-weight:700;color:var(--text);letter-spacing:1px;margin-bottom:4px}
+.exp-role{font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:500;color:var(--accent2);letter-spacing:2px;margin-bottom:18px}
+.exp-list{list-style:none;max-width:640px}
+.exp-list li{font-size:14px;line-height:1.8;color:#aec8b2;margin-bottom:8px;padding-left:16px;position:relative}
+.exp-list li::before{content:'›';position:absolute;left:0;color:var(--accent);font-size:16px;line-height:1.5}
+
+/* ── PROJECT ── */
+.proj-card{background:var(--panel);border:1px solid var(--border);border-radius:6px;overflow:hidden;position:relative;transition:border-color .3s,box-shadow .3s}
+.proj-card:hover{border-color:var(--border2);box-shadow:0 8px 60px #3db55415}
+.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent))}
+.proj-inner{display:grid;grid-template-columns:1fr 1fr}
+.proj-info{padding:48px}
+.proj-tech{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:4px;color:var(--accent);margin-bottom:14px}
+.proj-title{font-family:'Rajdhani',sans-serif;font-size:32px;font-weight:700;color:var(--text);line-height:1;margin-bottom:6px}
+.proj-sub{font-family:'Rajdhani',sans-serif;font-size:13px;letter-spacing:2px;color:var(--muted);margin-bottom:22px}
+.proj-desc{font-size:14px;line-height:1.8;color:#aec8b2;margin-bottom:28px}
+.proj-tags{display:flex;flex-wrap:wrap;gap:8px}
+.proj-tag{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:2px;padding:5px 12px;border:1px solid var(--border2);border-radius:2px;color:var(--muted)}
+
+.proj-visual{background:var(--panel2);border-left:1px solid var(--border);padding:48px;display:flex;flex-direction:column;gap:20px;justify-content:center}
+.mock-strip{background:#0a1809;border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.mock-row{display:flex;border-bottom:1px solid var(--border)}
+.mock-row:last-child{border-bottom:none}
+.mock-cell{flex:1;padding:12px 10px;border-right:1px solid var(--border);text-align:center}
+.mock-cell:last-child{border-right:none}
+.mock-lbl{font-family:'Share Tech Mono',monospace;font-size:7px;letter-spacing:2px;color:var(--muted2);margin-bottom:4px}
+.mock-val{font-family:'Rajdhani',sans-serif;font-size:20px;font-weight:700;color:var(--accent2)}
+.mock-bars{display:flex;flex-direction:column;gap:8px}
+.mock-bar-row{display:flex;align-items:center;gap:10px}
+.mock-bar-lbl{font-family:'Share Tech Mono',monospace;font-size:8px;color:var(--muted2);width:28px;text-align:right}
+.mock-bar-track{flex:1;height:6px;background:var(--border);border-radius:2px;overflow:hidden}
+.mock-bar-fill{height:100%;border-radius:2px;animation:barfill 1.6s ease-out forwards;width:0}
+.mock-bar-pct{font-family:'Share Tech Mono',monospace;font-size:8px;color:var(--muted);width:24px}
+
+/* ── COMPETÊNCIAS ── */
+.comp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:40px}
+.comp-block{background:var(--panel);padding:32px;transition:background .3s}
+.comp-block:hover{background:var(--panel2)}
+.comp-name{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;color:var(--text);margin-bottom:10px;letter-spacing:1px}
+.comp-items{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--muted);line-height:2.1}
+.tools-wrap{display:flex;flex-wrap:wrap;gap:8px}
+.tool{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:3px;padding:7px 16px;border:1px solid var(--border);border-radius:2px;color:var(--muted);background:var(--panel);transition:border-color .2s,color .2s,background .2s;cursor:default}
+.tool:hover{border-color:var(--accent);color:var(--accent2);background:#3db55410}
+
+/* ── FORMAÇÃO ── */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:56px}
+.form-card{background:var(--panel);border:1px solid var(--border);border-radius:4px;padding:30px;position:relative;overflow:hidden;transition:border-color .3s}
+.form-card:hover{border-color:var(--border2)}
+.form-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.4}
+.form-inst{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:3px;color:var(--accent);margin-bottom:8px}
+.form-degree{font-family:'Rajdhani',sans-serif;font-size:20px;font-weight:700;color:var(--text);margin-bottom:6px}
+.form-period{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted2)}
+
+.certs{display:flex;flex-direction:column}
+.cert-row{display:flex;align-items:center;gap:20px;padding:18px 0;border-bottom:1px solid var(--border)}
+.cert-row:first-child{border-top:1px solid var(--border)}
+.cert-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;box-shadow:0 0 10px var(--accent)}
+.cert-name{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:500;color:var(--text);flex:1}
+.cert-by{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--muted2)}
+
+/* ── CONTACT ── */
+.contact-wrap{background:var(--panel);border-top:1px solid var(--border);padding:80px 60px;text-align:center;position:relative;overflow:hidden}
+.contact-wrap::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:260px;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+.contact-title{font-family:'Rajdhani',sans-serif;font-size:clamp(32px,4vw,52px);font-weight:700;color:var(--text);margin-bottom:12px}
+.contact-sub{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:4px;color:var(--muted);margin-bottom:44px}
+.contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.contact-link{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:3px;padding:13px 24px;border:1px solid var(--border2);border-radius:2px;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:10px;transition:border-color .2s,color .2s,background .2s}
+.contact-link:hover{border-color:var(--accent);color:var(--accent);background:#3db55410}
+
+/* ── FOOTER ── */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:22px 60px;display:flex;align-items:center;justify-content:space-between}
+.footer-name{font-family:'Rajdhani',sans-serif;font-size:14px;letter-spacing:3px;color:var(--muted2);font-weight:600}
+.footer-copy{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--muted2)}
+
+/* ── CORNER ACCENTS ── */
+.ca{position:absolute;width:14px;height:14px}
+.ca-tl{top:18px;left:18px;border-top:1px solid var(--border2);border-left:1px solid var(--border2)}
+.ca-tr{top:18px;right:18px;border-top:1px solid var(--border2);border-right:1px solid var(--border2)}
+.ca-bl{bottom:18px;left:18px;border-bottom:1px solid var(--border2);border-left:1px solid var(--border2)}
+.ca-br{bottom:18px;right:18px;border-bottom:1px solid var(--border2);border-right:1px solid var(--border2)}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav,.section,.contact-wrap,footer{padding-left:24px;padding-right:24px}
+  .hero{padding:100px 24px 60px}
+  .hero-cube,.proj-visual{display:none}
+  .about-grid,.proj-inner,.form-grid,.sol-bottom{grid-template-columns:1fr}
+  .sol-grid,.comp-grid{grid-template-columns:1fr}
+  .hero-cards{flex-wrap:wrap}
+  .hero-card{border-right:none;border-bottom:1px solid var(--border)}
+}
+</style>
+</head>
+<body>
+
+<div class="scanline"></div>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="#">LC</a>
+  <div class="nav-links">
+    <a href="#about">PERFIL</a>
+    <a href="#solutions">SOLUÇÕES</a>
+    <a href="#experience">EXPERIÊNCIA</a>
+    <a href="#project">PROJETO</a>
+    <a href="#skills">COMPETÊNCIAS</a>
+    <a href="#contact">CONTATO</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-lines"></div>
+  <div class="ca ca-tl"></div>
+  <div class="ca ca-tr"></div>
+  <div class="ca ca-bl"></div>
+  <div class="ca ca-br"></div>
+
+  <div class="hero-inner">
+    <div class="hero-eyebrow">ENGENHARIA DE MINAS · INTELIGÊNCIA OPERACIONAL · MINERAÇÃO 4.0</div>
+
+    <h1 class="hero-name">
+      LEONARDO
+      <span>CANAZART</span>
+    </h1>
+
+    <div class="hero-tagline">
+      CENTRO DE CONTROLE OPERACIONAL · SISTEMAS DE DESPACHO · SOLUÇÕES DIGITAIS
+    </div>
+
+    <div class="hero-cards">
+      <div class="hero-card">
+        <div class="hc-label">soluções</div>
+        <div class="hc-value">Dashboards<em>operacionais</em></div>
+      </div>
+      <div class="hero-card">
+        <div class="hc-label">interesse</div>
+        <div class="hc-value">Mineração<em>4.0 · Digital</em></div>
+      </div>
+      <div class="hero-card">
+        <div class="hc-label">foco</div>
+        <div class="hc-value">Decisão<em>baseada em dados</em></div>
+      </div>
+      <div class="hero-card">
+        <div class="hc-label">perfil</div>
+        <div class="hc-value" style="color:var(--accent2)">Eng.<em>+ Desenvolvedor</em></div>
+      </div>
+    </div>
+
+    <div class="hero-cta">
+      <a class="btn-primary" href="#contact">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+        ENTRAR EM CONTATO
+      </a>
+      <a class="btn-ghost" href="https://www.linkedin.com/in/canazart" target="_blank">LINKEDIN ↗</a>
+    </div>
+  </div>
+
+  <!-- CUBE -->
+  <div class="hero-cube">
+    <svg width="170" height="190" viewBox="0 0 180 200" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 0 28px #3db55450)">
+      <polygon points="90,20 160,60 90,100 20,60" fill="#1d5c30"/>
+      <polygon points="20,60 90,100 90,180 20,140" fill="#0d3018"/>
+      <polygon points="160,60 90,100 90,180 160,140" fill="#174025"/>
+      <polyline points="20,60 90,20 160,60" fill="none" stroke="#a8f0b0" stroke-width="1" opacity=".5"/>
+      <line x1="90" y1="100" x2="90" y2="180" stroke="#3db55430" stroke-width="1"/>
+      <line x1="20" y1="60" x2="20" y2="140" stroke="#3db55420" stroke-width="1"/>
+      <line x1="160" y1="60" x2="160" y2="140" stroke="#3db55420" stroke-width="1"/>
+      <polyline points="20,60 90,20 160,60" fill="none" stroke="#5cd96e" stroke-width="1.5" opacity=".25"/>
+      <circle cx="20" cy="60" r="3" fill="#5cd96e" opacity=".8"/>
+      <circle cx="160" cy="60" r="3" fill="#5cd96e" opacity=".8"/>
+      <circle cx="90" cy="20" r="3" fill="#a8f0b0" opacity=".9"/>
+      <circle cx="90" cy="180" r="3" fill="#3db554" opacity=".6"/>
+    </svg>
+    <div class="cube-label">ENGENHARIA<br>& DADOS</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ── SOLUÇÕES & INTERESSES ── -->
+<section class="section" id="solutions">
+  <div class="sec-label reveal">O QUE CONSTRUO & O QUE ME MOVE</div>
+  <h2 class="sec-title reveal">Soluções & <span>Interesses</span></h2>
+
+  <div class="sol-grid reveal">
+    <div class="sol-card">
+      <div class="sol-name">AUTOMAÇÃO OPERACIONAL</div>
+      <div class="sol-desc">Desenvolvimento de ferramentas web que automatizam o registro, análise e visualização de dados de produção em tempo real — eliminando planilhas manuais e reduzindo o tempo de resposta a desvios operacionais.</div>
+    </div>
+    <div class="sol-card" style="border-left:1px solid var(--border);border-right:1px solid var(--border)">
+      <div class="sol-name">INTELIGÊNCIA DE FROTA</div>
+      <div class="sol-desc">Integração entre sistemas FMS e dashboards próprios para análise de ciclos de transporte, disponibilidade física e produtividade por frente, litologia e turno — com foco em decisão baseada em dados.</div>
+    </div>
+    <div class="sol-card">
+      <div class="sol-name">MINERAÇÃO 4.0</div>
+      <div class="sol-desc">Interesse na convergência entre engenharia de minas e tecnologia: digitalização de operações, sistemas de despacho de próxima geração, IoT embarcado em equipamentos e otimização do plano de lavra por dados.</div>
+    </div>
+  </div>
+
+  <div class="sol-bottom reveal">
+    <div class="sol-box">
+      <div class="sol-box-label">INTERESSES TÉCNICOS</div>
+      <div class="int-item"><div class="int-dot"></div><div class="int-text">Sistemas de despacho e FMS de próxima geração</div></div>
+      <div class="int-item"><div class="int-dot"></div><div class="int-text">Algoritmos de otimização de rota e alocação de frota</div></div>
+      <div class="int-item"><div class="int-dot"></div><div class="int-text">Dashboards operacionais e visualização de dados em tempo real</div></div>
+      <div class="int-item"><div class="int-dot"></div><div class="int-text">Geoprocessamento aplicado ao planejamento de lavra</div></div>
+      <div class="int-item"><div class="int-dot"></div><div class="int-text">Integração de dados operacionais e ERP em ambiente mineiro</div></div>
+    </div>
+    <div class="sol-box" style="border-top-color:var(--accent2)">
+      <div class="sol-box-label">VISÃO DE CARREIRA</div>
+      <div style="font-size:14px;line-height:1.9;color:#aec8b2">
+        Atuar na interseção entre <strong style="color:var(--accent2);font-weight:500">engenharia de minas, operação de CCO e desenvolvimento de sistemas</strong> — construindo pontes entre o chão de mina e a inteligência de dados.
+        <br><br>
+        Meu objetivo é ser o profissional que não apenas opera sistemas críticos, mas que os <strong style="color:var(--accent2);font-weight:500">entende profundamente o suficiente para criá-los e evoluí-los</strong>, tornando operações mineiras mais eficientes, digitais e orientadas por dados.
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── PERFIL ── -->
+<section class="section" id="about">
+  <div class="sec-label reveal">PERFIL PROFISSIONAL</div>
+  <h2 class="sec-title reveal">Sobre <span>mim</span></h2>
+
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>Graduando em <strong>Engenharia de Minas (UEMG)</strong> e Técnico em Mineração, com atuação direta no <strong>Centro de Controle Operacional (CCO)</strong> da Bemisa — Mina Pedra Branca, desde dezembro de 2025.</p>
+      <p>Minha atuação combina dois eixos complementares: a <strong>operação técnica em CCO</strong> — controle de frota em tempo real, aderência ao plano de lavra, análise de KPIs (DF, UT, produtividade) — e o <strong>desenvolvimento de soluções digitais</strong> voltadas à inteligência operacional.</p>
+      <p>Conduzi a <strong>implantação completa do sistema de despacho MineTrack (Sodep)</strong>, incluindo infraestrutura embarcada, parametrização de frentes, litologias e regras operacionais. Em paralelo, desenvolvo ferramentas próprias em HTML/CSS/JS para controle em curtos intervalos de tempo (SIC).</p>
+      <p>Experiências anteriores na <strong>ArcelorMittal</strong> (Supply Chain via SAP) e na <strong>Construtora Helmo</strong> (CAPEX/OPEX) complementam uma visão integrada de operação, manutenção e gestão de custos.</p>
+    </div>
+
+    <div class="skills-list reveal">
+      <div class="skill-row">
+        <div class="skill-name">CONTROLE OPERACIONAL (CCO)</div>
+        <div class="skill-bar"><div class="skill-fill" style="--w:100%"></div></div>
+        <div class="skill-level" style="color:var(--accent)">PRINCIPAL</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">SISTEMA DE DESPACHO (FMS)</div>
+        <div class="skill-bar"><div class="skill-fill" style="--w:100%"></div></div>
+        <div class="skill-level" style="color:var(--accent)">PRINCIPAL</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">SAP (MM / NetWeaver)</div>
+        <div class="skill-bar"><div class="skill-fill" style="--w:75%"></div></div>
+        <div class="skill-level" style="color:var(--muted)">AVANÇADO</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">HTML · CSS · JAVASCRIPT</div>
+        <div class="skill-bar"><div class="skill-fill" style="--w:75%"></div></div>
+        <div class="skill-level" style="color:var(--muted)">AVANÇADO</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">QGIS · ArcGIS</div>
+        <div class="skill-bar"><div class="skill-fill" style="--w:55%"></div></div>
+        <div class="skill-level" style="color:var(--muted2)">INTERMEDIÁRIO</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">INGLÊS · FRANCÊS</div>
+        <div class="skill-bar"><div class="skill-fill" style="--w:75%"></div></div>
+        <div class="skill-level" style="color:var(--muted)">PROFISSIONAL</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── EXPERIÊNCIA ── -->
+<section class="section" id="experience">
+  <div class="sec-label reveal">TRAJETÓRIA</div>
+  <h2 class="sec-title reveal">Experiência <span>Profissional</span></h2>
+
+  <div class="exp-wrap">
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <span>DEZ 2025 — PRESENTE</span>
+        <span class="exp-badge active">● EM ATIVIDADE</span>
+      </div>
+      <div class="exp-company">BEMISA HOLDING S.A.</div>
+      <div class="exp-role">OPERADOR DE SALA DE CONTROLE (CRO) — MINA PEDRA BRANCA</div>
+      <ul class="exp-list">
+        <li>Implantação completa do sistema de despacho MineTrack (Sodep): infraestrutura embarcada, parametrização de frotas, frentes de lavra, litologias e rotas operacionais.</li>
+        <li>Gerenciamento em tempo real do fluxo produtivo pit-to-plant, garantindo aderência ao plano de lavra e metas de produtividade.</li>
+        <li>Monitoramento de KPIs de frota (DF, UT, produtividade) e gestão técnica de indisponibilidades e desvios operacionais.</li>
+        <li>Interface com equipes de operação, manutenção e fornecedor Sodep para resolução de inconsistências e evolução contínua do sistema.</li>
+        <li>Desenvolvimento do Sistema de Informação de Controle (SIC) integrado ao MineTrack, com dashboards operacionais em HTML/CSS/JS.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <span>JAN 2025 — DEZ 2025</span>
+        <span class="exp-badge">ENCERRADO</span>
+      </div>
+      <div class="exp-company">ARCELORMITTAL BRASIL</div>
+      <div class="exp-role">ESTAGIÁRIO EM SUPRIMENTOS — MRO E MATÉRIA-PRIMA</div>
+      <ul class="exp-list">
+        <li>Suporte ao planejamento e gestão da cadeia de suprimentos com foco no abastecimento de sinterização e alto forno.</li>
+        <li>Controle de estoques críticos (minério de ferro, calcário, coque) via SAP MM e NetWeaver.</li>
+        <li>Validação de parâmetros fiscais (CFOP e tributos) e integridade de dados de pesagem e movimentação de materiais.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <span>JUL 2024 — JAN 2025</span>
+        <span class="exp-badge">ENCERRADO</span>
+      </div>
+      <div class="exp-company">PH INTRALOGÍSTICA</div>
+      <div class="exp-role">ASSISTENTE DE OPERAÇÕES — LOGÍSTICA SIDERÚRGICA</div>
+      <ul class="exp-list">
+        <li>Controle operacional e logístico de transporte de gusa e escória em ambiente de alto forno.</li>
+        <li>Monitoramento de KPIs de frota, disponibilidade de ativos e produtividade por análise técnica de dados.</li>
+        <li>Execução de checklists de equipamentos pesados e interface com frentes de serviço para otimização de recursos.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <span>MAR 2024 — JUL 2024</span>
+        <span class="exp-badge">ENCERRADO</span>
+      </div>
+      <div class="exp-company">CONSTRUTORA HELMO</div>
+      <div class="exp-role">ESTAGIÁRIO TÉCNICO — CONTROLADORIA</div>
+      <ul class="exp-list">
+        <li>Gestão de custos de infraestrutura: CAPEX, OPEX e análise de desvios orçamentários (budget vs. actual).</li>
+        <li>Processamento de medições de serviços e lançamentos financeiros via Sieg e Excel.</li>
+        <li>Monitoramento de obrigações financeiras e fluxo de caixa de projetos de infraestrutura.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── PROJETO ── -->
+<section class="section" id="project">
+  <div class="sec-label reveal">PROJETO DESTAQUE</div>
+  <h2 class="sec-title reveal">Short Interval <span>Control</span></h2>
+
+  <div class="proj-card reveal">
+    <div class="ca ca-tl"></div><div class="ca ca-tr"></div><div class="ca ca-bl"></div><div class="ca ca-br"></div>
+    <div class="proj-inner">
+      <div class="proj-info">
+        <div class="proj-tech">⬡ &nbsp;HTML · CSS · JAVASCRIPT</div>
+        <div class="proj-title">SIC — Sistema de Controle por Intervalo</div>
+        <div class="proj-sub">INTEGRADO AO MINETRACK · CCO BEMISA</div>
+        <p class="proj-desc">Sistema web de Short Interval Control desenvolvido do zero e integrado ao sistema de despacho MineTrack (Sodep), permitindo monitoramento da produção em janelas horárias com rastreamento por litologia, frente e equipamento. Inclui importação automatizada de dados via paste, cálculo em tempo real de KPIs, registro estruturado de paradas e desvios, dashboards operacionais e auto-save. Ferramenta em uso ativo no CCO da Mina Pedra Branca.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">SHORT INTERVAL CONTROL</span>
+          <span class="proj-tag">MINETRACK INTEGRATION</span>
+          <span class="proj-tag">KPI DASHBOARD</span>
+          <span class="proj-tag">REAL-TIME MONITORING</span>
+          <span class="proj-tag">FLEET MANAGEMENT</span>
+          <span class="proj-tag">PIT-TO-PLANT</span>
+        </div>
+      </div>
+      <div class="proj-visual">
+        <div class="mock-strip">
+          <div class="mock-row">
+            <div class="mock-cell"><div class="mock-lbl">PRODUÇÃO ACUM.</div><div class="mock-val" style="color:var(--accent2)">2.840<span style="font-size:11px;color:var(--muted)"> t</span></div></div>
+            <div class="mock-cell"><div class="mock-lbl">META TURNO</div><div class="mock-val" style="color:var(--text)">3.200<span style="font-size:11px;color:var(--muted)"> t</span></div></div>
+            <div class="mock-cell"><div class="mock-lbl">ADERÊNCIA</div><div class="mock-val" style="color:var(--yellow)">88<span style="font-size:11px;color:var(--muted)"> %</span></div></div>
+          </div>
+          <div class="mock-row">
+            <div class="mock-cell"><div class="mock-lbl">DISP. FÍSICA</div><div class="mock-val">91<span style="font-size:11px;color:var(--muted)"> %</span></div></div>
+            <div class="mock-cell"><div class="mock-lbl">UTIL. FÍSICA</div><div class="mock-val">84<span style="font-size:11px;color:var(--muted)"> %</span></div></div>
+            <div class="mock-cell"><div class="mock-lbl">CAMINHÕES ATI.</div><div class="mock-val">6<span style="font-size:11px;color:var(--muted)"> / 8</span></div></div>
+          </div>
+        </div>
+        <div class="mock-bars">
+          <div style="font-family:'Share Tech Mono',monospace;font-size:7px;letter-spacing:3px;color:var(--muted2);margin-bottom:4px">PRODUÇÃO POR LITOLOGIA</div>
+          <div class="mock-bar-row"><div class="mock-bar-lbl">HEM</div><div class="mock-bar-track"><div class="mock-bar-fill" style="--w:78%;background:#cc3a2a"></div></div><div class="mock-bar-pct">78%</div></div>
+          <div class="mock-bar-row"><div class="mock-bar-lbl">OPE</div><div class="mock-bar-track"><div class="mock-bar-fill" style="--w:56%;background:#d4882a"></div></div><div class="mock-bar-pct">56%</div></div>
+          <div class="mock-bar-row"><div class="mock-bar-lbl">ISA</div><div class="mock-bar-track"><div class="mock-bar-fill" style="--w:42%;background:#7a9e88"></div></div><div class="mock-bar-pct">42%</div></div>
+        </div>
+        <div style="font-family:'Share Tech Mono',monospace;font-size:7px;letter-spacing:2px;color:var(--muted2)">● MINETRACK IMPORTADO &nbsp;·&nbsp; ● AUTO-SAVE ATIVO</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── COMPETÊNCIAS ── -->
+<section class="section" id="skills">
+  <div class="sec-label reveal">COMPETÊNCIAS</div>
+  <h2 class="sec-title reveal">Áreas de <span>Atuação</span></h2>
+
+  <div class="comp-grid reveal">
+    <div class="comp-block">
+      <div class="comp-name">OPERAÇÕES DE MINA</div>
+      <div class="comp-items">Controle de Frota (FMS)<br>Short Interval Control<br>Plano de Lavra<br>Pit-to-Plant<br>Mina a Céu Aberto<br>Gestão de Down-time</div>
+    </div>
+    <div class="comp-block" style="border-left:1px solid var(--border);border-right:1px solid var(--border)">
+      <div class="comp-name">SISTEMAS & TECNOLOGIA</div>
+      <div class="comp-items">MineTrack (Sodep)<br>SAP MM / NetWeaver<br>HTML · CSS · JavaScript<br>Excel Avançado / Power BI<br>QGIS · ArcGIS<br>Plataforma Sieg</div>
+    </div>
+    <div class="comp-block">
+      <div class="comp-name">ANÁLISE & GESTÃO</div>
+      <div class="comp-items">KPIs Operacionais (DF, UT)<br>CAPEX / OPEX<br>Supply Chain<br>Gestão de Projetos<br>Budget vs. Actual<br>Dashboards Operacionais</div>
+    </div>
+  </div>
+
+  <div class="sec-label reveal" style="margin-bottom:20px">FERRAMENTAS & TECNOLOGIAS</div>
+  <div class="tools-wrap reveal">
+    <span class="tool">MINETRACK · SODEP</span>
+    <span class="tool">SAP MM</span>
+    <span class="tool">SAP NETWEAVER</span>
+    <span class="tool">HTML</span>
+    <span class="tool">CSS</span>
+    <span class="tool">JAVASCRIPT</span>
+    <span class="tool">EXCEL AVANÇADO</span>
+    <span class="tool">POWER BI</span>
+    <span class="tool">QGIS</span>
+    <span class="tool">ARCGIS</span>
+    <span class="tool">SIEG</span>
+    <span class="tool">NR-12</span>
+    <span class="tool">RESPONSIBLESTEEL</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── FORMAÇÃO ── -->
+<section class="section">
+  <div class="sec-label reveal">FORMAÇÃO</div>
+  <h2 class="sec-title reveal">Educação & <span>Certificações</span></h2>
+
+  <div class="form-grid reveal">
+    <div class="form-card">
+      <div class="form-inst">UEMG — UNIVERSIDADE DO ESTADO DE MINAS GERAIS</div>
+      <div class="form-degree">Bacharelado em Engenharia de Minas</div>
+      <div class="form-period">MAR 2023 — DEZ 2027 · EM ANDAMENTO</div>
+    </div>
+    <div class="form-card">
+      <div class="form-inst">CENTRO EDUCACIONAL ROBERTO PORTO</div>
+      <div class="form-degree">Técnico em Mineração</div>
+      <div class="form-period">AGO 2022 — JUL 2024 · CONCLUÍDO</div>
+    </div>
+  </div>
+
+  <div class="sec-label reveal" style="margin-bottom:4px">CERTIFICAÇÕES</div>
+  <div class="certs reveal">
+    <div class="cert-row"><div class="cert-dot"></div><div class="cert-name">Implementing a Software Automation Strategy</div><div class="cert-by">SKILLSOFT</div></div>
+    <div class="cert-row"><div class="cert-dot"></div><div class="cert-name">Software Product Management: Mapping & Planning</div><div class="cert-by">SKILLSOFT</div></div>
+    <div class="cert-row"><div class="cert-dot"></div><div class="cert-name">Gestão de Projetos de Software</div><div class="cert-by">IFRS</div></div>
+    <div class="cert-row"><div class="cert-dot"></div><div class="cert-name">ResponsibleSteel — Padrão Internacional de Mineração</div><div class="cert-by">ARCELORMITTAL</div></div>
+    <div class="cert-row"><div class="cert-dot"></div><div class="cert-name">NR-12 — Segurança em Máquinas e Equipamentos</div><div class="cert-by">CERTIFICAÇÃO TÉCNICA</div></div>
+    <div class="cert-row"><div class="cert-dot"></div><div class="cert-name">Cybersecurity Awareness Programme</div><div class="cert-by">ARCELORMITTAL</div></div>
+    <div class="cert-row"><div class="cert-dot"></div><div class="cert-name">Inglês & Francês — Leitura Técnica Profissional</div><div class="cert-by">IFRS</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── CONTATO ── -->
+<div class="contact-wrap" id="contact">
+  <h2 class="contact-title reveal">Vamos conversar?</h2>
+  <div class="contact-sub reveal">ENGENHARIA · CCO · SISTEMAS OPERACIONAIS</div>
+  <div class="contact-links reveal">
+    <a class="contact-link" href="mailto:canazartleo@gmail.com">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
+      CANAZARTLEO@GMAIL.COM
+    </a>
+    <a class="contact-link" href="tel:+5531996650183">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+      (31) 99665-0183
+    </a>
+    <a class="contact-link" href="https://www.linkedin.com/in/canazart" target="_blank">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LINKEDIN · /IN/CANAZART
+    </a>
+    <a class="contact-link" href="#">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      JOÃO MONLEVADE · MG
+    </a>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-name">LEONARDO P. P. CANAZART</div>
+  <div class="footer-copy">ENGENHARIA DE MINAS · CCO · INTELIGÊNCIA OPERACIONAL</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
