@@ -4,10 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Leonardo Canazart , Engenharia de Minas · CCO · Inteligência Operacional</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap&display=swap" rel="stylesheet"/>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,4 93,27 93,73 50,96 7,73 7,27' fill='%230b1a0d' stroke='%233db554' stroke-width='4'/%3E%3Cpolygon points='50,18 79,34 79,66 50,82 21,66 21,34' fill='%231d5c30' stroke='%235cd96e' stroke-width='1.5' opacity='.6'/%3E%3Ccircle cx='50' cy='27' r='3' fill='%235cd96e' opacity='.9'/%3E%3Ccircle cx='79' cy='34' r='3' fill='%235cd96e' opacity='.8'/%3E%3Ccircle cx='79' cy='66' r='3' fill='%235cd96e' opacity='.8'/%3E%3Ccircle cx='50' cy='82' r='3' fill='%233db554' opacity='.6'/%3E%3Ccircle cx='21' cy='66' r='3' fill='%235cd96e' opacity='.8'/%3E%3Ccircle cx='21' cy='34' r='3' fill='%235cd96e' opacity='.8'/%3E%3C/svg%3E"/>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -68,8 +65,6 @@ nav{
   transition:color .2s;
 }
 .nav-links a:hover{color:var(--accent2)}
-.nav-links a.nav-active{color:var(--accent2);position:relative}
-.nav-links a.nav-active::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--accent2);border-radius:2px}
 
 /* ── HERO ── */
 .hero{
@@ -327,6 +322,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:22px 60px
     <a href="#solutions">SOLUÇÕES</a>
     <a href="#experience">EXPERIÊNCIA</a>
     <a href="#project">PROJETO</a>
+    <a href="#sic-demo" style="color:var(--accent)">DEMO SIC</a>
     <a href="#skills">COMPETÊNCIAS</a>
     <a href="#contact">CONTATO</a>
   </div>
@@ -587,13 +583,6 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:22px 60px
           <span class="proj-tag">FLEET MANAGEMENT</span>
           <span class="proj-tag">PIT-TO-PLANT</span>
         </div>
-        <div style="margin-top:28px;display:flex;align-items:center;gap:14px">
-          <div style="display:flex;align-items:center;gap:10px;padding:11px 20px;border:1px solid var(--border2);border-radius:2px;background:#3db55408">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#3db554" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            <span style="font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:3px;color:var(--accent)">ACESSO RESTRITO · USO INTERNO CCO</span>
-          </div>
-          <div style="font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--muted2)">EM OPERAÇÃO ATIVA</div>
-        </div>
       </div>
       <div class="proj-visual">
         <div class="mock-strip">
@@ -619,6 +608,189 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:22px 60px
     </div>
   </div>
 </section>
+
+<div class="divider"></div>
+
+<!-- ── SIC SIMULAÇÃO ── -->
+<section class="section" id="sic-demo">
+  <div class="sec-label reveal">DEMONSTRAÇÃO INTERATIVA</div>
+  <h2 class="sec-title reveal">SIC ao <span>Vivo</span></h2>
+  <p class="reveal" style="font-size:14px;color:var(--muted);margin-top:-36px;margin-bottom:48px;font-family:'Share Tech Mono',monospace;letter-spacing:2px">SIMULAÇÃO COM DADOS FICTÍCIOS · AVANCE O TURNO HORA A HORA</p>
+
+  <div class="reveal" style="background:var(--panel);border:1px solid var(--border);border-radius:6px;overflow:hidden;position:relative">
+    <div class="ca ca-tl"></div><div class="ca ca-tr"></div><div class="ca ca-bl"></div><div class="ca ca-br"></div>
+
+    <!-- HEADER DO SIC -->
+    <div style="background:#060e07;border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:12px">
+        <svg width="22" height="22" viewBox="0 0 180 200" style="filter:drop-shadow(0 0 8px #3db55466)">
+          <polygon points="90,10 160,50 90,90 20,50" fill="#1d5c30"/>
+          <polygon points="20,50 90,90 90,170 20,130" fill="#0d3018"/>
+          <polygon points="160,50 90,90 90,170 160,130" fill="#174025"/>
+        </svg>
+        <div>
+          <div style="font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;letter-spacing:3px;color:var(--accent2)">SHORT INTERVAL CONTROL</div>
+          <div style="font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--muted2)">SISTEMA DE INFORMAÇÃO DE CONTROLE · SIMULAÇÃO</div>
+        </div>
+      </div>
+      <div style="text-align:right">
+        <div id="sic-clock" style="font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:700;color:var(--accent2);letter-spacing:3px">07:00</div>
+        <div style="font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--muted2)" id="sic-turno">TURNO A · HORA 1/8</div>
+      </div>
+    </div>
+
+    <!-- KPI STRIP -->
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border-bottom:1px solid var(--border)">
+      <div class="sic-kpi" id="kpi-prod">
+        <div class="sic-kpi-lbl">PRODUÇÃO ACUM.</div>
+        <div class="sic-kpi-val" id="v-prod">0</div>
+        <div class="sic-kpi-u">toneladas</div>
+      </div>
+      <div class="sic-kpi" id="kpi-est">
+        <div class="sic-kpi-lbl">ESTIMATIVA FINAL</div>
+        <div class="sic-kpi-val" id="v-est" style="color:var(--muted)">—</div>
+        <div class="sic-kpi-u" id="v-est-u">aguardando dados</div>
+      </div>
+      <div class="sic-kpi">
+        <div class="sic-kpi-lbl">ADERÊNCIA</div>
+        <div class="sic-kpi-val" id="v-ader" style="color:var(--accent2)">0%</div>
+        <div class="sic-kpi-u">à meta horária</div>
+      </div>
+      <div class="sic-kpi">
+        <div class="sic-kpi-lbl">DISP. FÍSICA</div>
+        <div class="sic-kpi-val" id="v-df">91%</div>
+        <div class="sic-kpi-u">frota ativa</div>
+      </div>
+      <div class="sic-kpi">
+        <div class="sic-kpi-lbl">CAMINHÕES</div>
+        <div class="sic-kpi-val" id="v-cam" style="color:var(--accent2)">7 / 8</div>
+        <div class="sic-kpi-u">disponíveis</div>
+      </div>
+    </div>
+
+    <!-- BARRA META -->
+    <div style="padding:14px 24px;border-bottom:1px solid var(--border);background:#07100800">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:3px;color:var(--muted2)">PROGRESSO DA META · 3.200 t</div>
+        <div style="display:flex;align-items:center;gap:16px">
+          <div style="font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--muted)" id="v-pct-label">0% concluído</div>
+          <div id="v-est-trend" style="display:none;font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:2px"></div>
+        </div>
+      </div>
+      <div style="height:6px;background:var(--border);border-radius:3px;overflow:hidden;position:relative">
+        <div id="meta-bar" style="height:100%;width:0%;border-radius:3px;transition:width .6s ease;background:linear-gradient(90deg,var(--accent),var(--accent2))"></div>
+        <!-- estimativa marker -->
+        <div id="est-marker" style="display:none;position:absolute;top:-3px;width:2px;height:12px;background:#ffffff40;border-radius:1px;transition:left .6s ease"></div>
+      </div>
+    </div>
+
+    <!-- CORPO PRINCIPAL -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+
+      <!-- TABELA HORÁRIA -->
+      <div style="padding:20px 24px;border-right:1px solid var(--border)">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:3px;color:var(--accent);margin-bottom:12px">CONTROLE HORÁRIO</div>
+        <table style="width:100%;border-collapse:collapse;font-family:'Share Tech Mono',monospace;font-size:10px">
+          <thead>
+            <tr>
+              <th style="text-align:left;padding:5px 6px;border-bottom:1px solid var(--border);color:var(--muted2);font-size:8px;letter-spacing:2px">HORA</th>
+              <th style="text-align:center;padding:5px 6px;border-bottom:1px solid var(--border);color:#cc6655;font-size:8px;letter-spacing:2px">HEM</th>
+              <th style="text-align:center;padding:5px 6px;border-bottom:1px solid var(--border);color:#d4a040;font-size:8px;letter-spacing:2px">GOE</th>
+              <th style="text-align:center;padding:5px 6px;border-bottom:1px solid var(--border);color:var(--accent);font-size:8px;letter-spacing:2px">TOTAL</th>
+              <th style="text-align:center;padding:5px 6px;border-bottom:1px solid var(--border);color:var(--muted2);font-size:8px;letter-spacing:2px">STATUS</th>
+            </tr>
+          </thead>
+          <tbody id="sic-tbody"></tbody>
+        </table>
+      </div>
+
+      <!-- PAINEL DIREITO -->
+      <div style="padding:20px 24px;display:flex;flex-direction:column;gap:20px">
+
+        <!-- LITOLOGIA -->
+        <div>
+          <div style="font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:3px;color:var(--accent);margin-bottom:12px">PRODUÇÃO POR LITOLOGIA</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+                <span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#cc6655;letter-spacing:2px">HEMATITA</span>
+                <span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--muted)" id="lbl-hem">0 t</span>
+              </div>
+              <div style="height:8px;background:var(--border);border-radius:2px;overflow:hidden">
+                <div id="bar-hem" style="height:100%;width:0%;background:#cc3a2a;border-radius:2px;transition:width .6s ease"></div>
+              </div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+                <span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:#d4a040;letter-spacing:2px">GOETITA</span>
+                <span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--muted)" id="lbl-goe">0 t</span>
+              </div>
+              <div style="height:8px;background:var(--border);border-radius:2px;overflow:hidden">
+                <div id="bar-goe" style="height:100%;width:0%;background:#d4882a;border-radius:2px;transition:width .6s ease"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EQUIPAMENTOS -->
+        <div>
+          <div style="font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:3px;color:var(--accent);margin-bottom:12px">STATUS DA FROTA</div>
+          <div id="frota-wrap" style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px"></div>
+        </div>
+
+        <!-- ALERTAS -->
+        <div>
+          <div style="font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:3px;color:var(--accent);margin-bottom:10px">OCORRÊNCIAS</div>
+          <div id="alertas-wrap" style="display:flex;flex-direction:column;gap:6px;min-height:48px">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--muted2);letter-spacing:1px">Nenhuma ocorrência registrada.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FOOTER DO SIC -->
+    <div style="background:#060e07;border-top:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:10px">
+        <button onclick="simToggle()" id="btn-play" style="font-family:'Rajdhani',sans-serif;font-weight:600;font-size:12px;letter-spacing:3px;padding:10px 24px;background:var(--accent);color:#050c06;border:none;border-radius:2px;cursor:pointer;transition:background .2s;display:flex;align-items:center;gap:8px">
+          <span id="btn-play-icon">▶</span><span id="btn-play-label">INICIAR TURNO</span>
+        </button>
+        <button onclick="simReset()" style="font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:3px;padding:10px 18px;background:transparent;color:var(--muted);border:1px solid var(--border2);border-radius:2px;cursor:pointer;transition:border-color .2s,color .2s" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--muted)'">REINICIAR</button>
+        <div id="countdown-wrap" style="display:none;align-items:center;gap:8px">
+          <div style="font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--muted2)">PRÓXIMA HORA EM</div>
+          <div style="position:relative;width:32px;height:32px">
+            <svg width="32" height="32" style="transform:rotate(-90deg)">
+              <circle cx="16" cy="16" r="13" fill="none" stroke="var(--border2)" stroke-width="2"/>
+              <circle id="cd-ring" cx="16" cy="16" r="13" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="81.68" stroke-dashoffset="0" style="transition:stroke-dashoffset 1s linear"/>
+            </svg>
+            <div id="cd-num" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;color:var(--accent2)">10</div>
+          </div>
+        </div>
+      </div>
+      <div style="font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--muted2)">● SIC SIMULADO · DADOS FICTÍCIOS · FINS DEMONSTRATIVOS</div>
+    </div>
+  </div>
+</section>
+
+<!-- SIC STYLES -->
+<style>
+.sic-kpi{background:var(--panel2);padding:14px 12px;text-align:center}
+.sic-kpi-lbl{font-family:'Share Tech Mono',monospace;font-size:7px;letter-spacing:3px;color:var(--muted2);margin-bottom:4px}
+.sic-kpi-val{font-family:'Rajdhani',sans-serif;font-size:26px;font-weight:700;color:var(--accent2);line-height:1.1}
+.sic-kpi-u{font-family:'Share Tech Mono',monospace;font-size:7px;color:var(--muted2);margin-top:2px}
+.sic-tr-done td{background:#3db55408!important}
+.sic-tr-active td{background:#3db55414!important;outline:1px solid #3db55430}
+.sic-tr-future td{opacity:.35}
+.sic-td{border-bottom:1px solid var(--border);padding:6px 6px;text-align:center;color:var(--text)}
+.sic-td-h{border-bottom:1px solid var(--border);padding:6px 6px;text-align:left;color:var(--accent);font-size:10px;font-weight:bold}
+.equip{border-radius:3px;padding:8px 4px;text-align:center;font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:1px;font-weight:bold;transition:background .4s}
+.equip-ok{background:#1d5c2050;border:1px solid #3db55440;color:var(--accent2)}
+.equip-down{background:#5c1d1d50;border:1px solid #c0404040;color:#e07070}
+.alerta-ok{font-family:'Share Tech Mono',monospace;font-size:9px;padding:6px 10px;background:#3db55410;border:1px solid #3db55430;border-radius:2px;color:var(--accent);letter-spacing:1px}
+.alerta-warn{font-family:'Share Tech Mono',monospace;font-size:9px;padding:6px 10px;background:#dba52010;border:1px solid #dba52040;border-radius:2px;color:var(--yellow);letter-spacing:1px}
+.alerta-bad{font-family:'Share Tech Mono',monospace;font-size:9px;padding:6px 10px;background:#e03e3e10;border:1px solid #e03e3e40;border-radius:2px;color:#e07070;letter-spacing:1px}
+@keyframes fadeInDown{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+</style>
 
 <div class="divider"></div>
 
@@ -701,7 +873,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:22px 60px
   <div class="contact-links reveal">
     <a class="contact-link" href="mailto:canazartleo@gmail.com">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
-      canazartleo@gmail.com
+      CANAZARTLEO@GMAIL.COM
     </a>
     <a class="contact-link" href="tel:+5531996650183">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
@@ -724,30 +896,326 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:22px 60px
   <div class="footer-copy">ENGENHARIA DE MINAS · CCO · INTELIGÊNCIA OPERACIONAL</div>
 </footer>
 
+<!-- ── SCRIPTS ── -->
 <script>
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      obs.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+(function(){
+  const META = 3200;
+  const INTERVAL_MS = 10000;
+  const HORAS = [
+    {label:'07:00-08:00', hem:210, goe:115, df:91, cam:7, eventos:[]},
+    {label:'08:00-09:00', hem:230, goe:120, df:91, cam:7, eventos:['Produção dentro da meta horária']},
+    {label:'09:00-10:00', hem:195, goe:90,  df:88, cam:6, eventos:['CB-03 em manutenção corretiva'], warn:true},
+    {label:'10:00-11:00', hem:240, goe:130, df:91, cam:7, eventos:['Recuperação de ritmo após parada']},
+    {label:'11:00-12:00', hem:220, goe:110, df:91, cam:7, eventos:[]},
+    {label:'12:00-12:30', hem:0,   goe:0,   df:91, cam:7, eventos:['Intervalo de almoço, operação suspensa'], isBreak:true},
+    {label:'12:30-13:30', hem:200, goe:100, df:88, cam:6, eventos:['Retomada pós-almoço']},
+    {label:'13:30-14:30', hem:245, goe:135, df:94, cam:8, eventos:['Frota completa, ritmo máximo']},
+    {label:'14:30-15:00', hem:115, goe:65,  df:94, cam:8, eventos:['Encerramento de turno']},
+  ];
+  const EQUIPAMENTOS = ['CB-01','CB-02','CB-03','CB-04','CB-05','CB-06','CB-07','CB-08'];
+  const DOWN_HORAS = {2:['CB-03'], 6:['CB-03']};
+  const CIRC = 2*Math.PI*13;
 
-// Nav active state
-const sections = document.querySelectorAll('section[id], div[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-const navObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      navLinks.forEach(a => a.classList.remove('nav-active'));
-      const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
-      if (active) active.classList.add('nav-active');
+  let horaAtual=0, prodAcum=0, hemAcum=0, goeAcum=0;
+  let playing=false, timer=null, cdTimer=null, cdSec=0;
+
+  function fmt(n){return n.toLocaleString('pt-BR')}
+
+  function buildTable(){
+    const tb=document.getElementById('sic-tbody');
+    if(!tb) return;
+    tb.innerHTML='';
+    HORAS.forEach((h,i)=>{
+      const tr=document.createElement('tr');
+      tr.id='tr-'+i;
+      if(h.isBreak){
+        tr.innerHTML=`<td class="sic-td-h" style="color:var(--yellow)">${h.label}</td><td class="sic-td" colspan="4" style="color:var(--yellow);letter-spacing:2px;font-size:9px">INTERVALO</td>`;
+      } else {
+        tr.innerHTML=`
+          <td class="sic-td-h">${h.label}</td>
+          <td class="sic-td" id="td-hem-${i}">·</td>
+          <td class="sic-td" id="td-goe-${i}">·</td>
+          <td class="sic-td" id="td-tot-${i}" style="color:var(--accent);font-weight:bold">·</td>
+          <td class="sic-td" id="td-st-${i}" style="color:var(--muted2)">·</td>`;
+      }
+      tr.className = i===0 ? 'sic-tr-active' : 'sic-tr-future';
+      tb.appendChild(tr);
+    });
+  }
+
+  function buildFrota(){
+    const w=document.getElementById('frota-wrap');
+    if(!w) return;
+    w.innerHTML='';
+    EQUIPAMENTOS.forEach(eq=>{
+      const d=document.createElement('div');
+      d.className='equip equip-ok';
+      d.id='eq-'+eq;
+      d.textContent=eq;
+      w.appendChild(d);
+    });
+  }
+
+  function updateFrota(idx){
+    EQUIPAMENTOS.forEach(eq=>{
+      const el=document.getElementById('eq-'+eq);
+      if(!el) return;
+      const downs=DOWN_HORAS[idx]||[];
+      el.className=downs.includes(eq)?'equip equip-down':'equip equip-ok';
+    });
+  }
+
+  function addAlerta(msg,tipo){
+    const w=document.getElementById('alertas-wrap');
+    if(!w) return;
+    const init=w.querySelector('[data-init]');
+    if(init) w.innerHTML='';
+    const d=document.createElement('div');
+    d.className=tipo==='ok'?'alerta-ok':tipo==='warn'?'alerta-warn':'alerta-bad';
+    d.textContent=msg;
+    d.style.animation='fadeInDown .3s ease';
+    w.prepend(d);
+    while(w.children.length>4) w.removeChild(w.lastChild);
+  }
+
+  function startCountdown(){
+    const wrap=document.getElementById('countdown-wrap');
+    if(wrap) wrap.style.display='flex';
+    cdSec=10;
+    updateCD();
+    cdTimer=setInterval(()=>{ cdSec--; updateCD(); if(cdSec<=0) clearInterval(cdTimer); },1000);
+  }
+
+  function updateCD(){
+    const num=document.getElementById('cd-num');
+    const ring=document.getElementById('cd-ring');
+    if(num) num.textContent=cdSec;
+    if(ring){
+      ring.style.strokeDashoffset=CIRC-(cdSec/10)*CIRC;
+      ring.style.stroke=cdSec<=3?'#e03e3e':cdSec<=6?'var(--yellow)':'var(--accent)';
     }
-  });
-}, { rootMargin: '-40% 0px -55% 0px' });
-sections.forEach(s => navObs.observe(s));
+  }
+
+  function stopCountdown(){
+    clearInterval(cdTimer);
+    const wrap=document.getElementById('countdown-wrap');
+    if(wrap) wrap.style.display='none';
+    const ring=document.getElementById('cd-ring');
+    if(ring){ ring.style.strokeDashoffset=0; ring.style.stroke='var(--accent)'; }
+  }
+
+  function animateCount(id,target){
+    const el=document.getElementById(id);
+    if(!el) return;
+    const start=parseInt(el.textContent.replace(/\D/g,''))||0;
+    const dur=600,fps=30,steps=Math.round(dur/(1000/fps));
+    const inc=(target-start)/steps;
+    let cur=start,count=0;
+    const t=setInterval(()=>{
+      cur+=inc; count++;
+      el.textContent=fmt(Math.round(cur));
+      if(count>=steps){ el.textContent=fmt(target); clearInterval(t); }
+    },1000/fps);
+  }
+
+  function step(){
+    if(horaAtual>=HORAS.length){ stopSim(); return; }
+    const h=HORAS[horaAtual];
+
+    if(horaAtual>0){
+      const prev=document.getElementById('tr-'+(horaAtual-1));
+      if(prev) prev.className='sic-tr-done';
+    }
+    const tr=document.getElementById('tr-'+horaAtual);
+    if(tr) tr.className='sic-tr-active';
+
+    if(!h.isBreak){
+      prodAcum+=h.hem+h.goe;
+      hemAcum+=h.hem;
+      goeAcum+=h.goe;
+      const tot=h.hem+h.goe;
+      const metaH=Math.round(META/8);
+      const aderH=Math.round((tot/metaH)*100);
+      const status=aderH>=90?'✔ OK':aderH>=75?'▲ BAIXO':'✖ DESVIO';
+      const statusColor=aderH>=90?'var(--accent2)':aderH>=75?'var(--yellow)':'#e07070';
+
+      const tdH=document.getElementById('td-hem-'+horaAtual);
+      const tdG=document.getElementById('td-goe-'+horaAtual);
+      const tdT=document.getElementById('td-tot-'+horaAtual);
+      const tdS=document.getElementById('td-st-'+horaAtual);
+      if(tdH) tdH.textContent=fmt(h.hem);
+      if(tdG) tdG.textContent=fmt(h.goe);
+      if(tdT) tdT.textContent=fmt(tot);
+      if(tdS){ tdS.textContent=status; tdS.style.color=statusColor; }
+
+      animateCount('v-prod',prodAcum);
+      const pctMeta=Math.min(100,Math.round((prodAcum/META)*100));
+      const nonBreak=HORAS.slice(0,horaAtual+1).filter(x=>!x.isBreak).length;
+      const totalNonBreak=HORAS.filter(x=>!x.isBreak).length;
+      const ritmoMedio=prodAcum/nonBreak;
+      const horasRestantes=totalNonBreak-nonBreak;
+      const estimativa=Math.round(prodAcum+(ritmoMedio*horasRestantes));
+
+      // Atualiza KPI estimativa
+      const estEl=document.getElementById('v-est');
+      const estU=document.getElementById('v-est-u');
+      const estTrend=document.getElementById('v-est-trend');
+      if(estEl){
+        estEl.textContent=fmt(estimativa);
+        estEl.style.color=estimativa>=META?'var(--accent2)':estimativa>=META*0.9?'var(--yellow)':'#e07070';
+      }
+      if(estU){
+        const diff=estimativa-META;
+        const diffStr=(diff>=0?'+':'')+fmt(diff)+' t vs meta';
+        estU.textContent=diffStr;
+        estU.style.color=diff>=0?'var(--accent)':diff>=-META*0.05?'var(--yellow)':'#e07070';
+      }
+      // Marcador de estimativa na barra
+      const estMarker=document.getElementById('est-marker');
+      const estPct=Math.min(100,(estimativa/META)*100);
+      if(estMarker){
+        estMarker.style.display='block';
+        estMarker.style.left=estPct+'%';
+        estMarker.style.background=estimativa>=META?'var(--accent2)':'#e07070';
+      }
+      if(estTrend){
+        estTrend.style.display='block';
+        estTrend.textContent=estimativa>=META?'▲ NO RITMO':'▼ ABAIXO DO RITMO';
+        estTrend.style.color=estimativa>=META?'var(--accent2)':'#e07070';
+      }
+      const aderEl=document.getElementById('v-ader');
+      const aderGlobal=Math.round((prodAcum/(metaH*nonBreak))*100);
+      if(aderEl){ aderEl.textContent=aderGlobal+'%'; aderEl.style.color=aderGlobal>=90?'var(--accent2)':aderGlobal>=75?'var(--yellow)':'#e07070'; }
+      const dfEl=document.getElementById('v-df');
+      if(dfEl) dfEl.textContent=h.df+'%';
+      const camEl=document.getElementById('v-cam');
+      if(camEl) camEl.textContent=h.cam+' / 8';
+
+      const bar=document.getElementById('meta-bar');
+      if(bar){
+        bar.style.width=pctMeta+'%';
+        bar.style.background=pctMeta>=90?'linear-gradient(90deg,var(--accent),var(--accent2))':pctMeta>=70?'linear-gradient(90deg,#dba520,#f0c840)':'linear-gradient(90deg,#e03e3e,#f06060)';
+      }
+      const pctLbl=document.getElementById('v-pct-label');
+      if(pctLbl) pctLbl.textContent=pctMeta+'% concluído';
+
+      document.getElementById('bar-hem').style.width=Math.min(100,(hemAcum/(META*0.65))*100)+'%';
+      document.getElementById('bar-goe').style.width=Math.min(100,(goeAcum/(META*0.45))*100)+'%';
+      document.getElementById('lbl-hem').textContent=fmt(hemAcum)+' t';
+      document.getElementById('lbl-goe').textContent=fmt(goeAcum)+' t';
+
+      h.eventos.forEach(ev=>{
+        const t=ev.toLowerCase().includes('manutenção')||ev.toLowerCase().includes('desvio')?'bad':ev.toLowerCase().includes('recup')||ev.toLowerCase().includes('retomada')?'warn':'ok';
+        addAlerta(ev,t);
+      });
+      if(aderH<75) addAlerta('Desvio detectado em '+h.label.split('-')[0],'bad');
+    } else {
+      h.eventos.forEach(ev=>addAlerta(ev,'warn'));
+    }
+
+    const nextIdx=Math.min(horaAtual+1,HORAS.length-1);
+    const sic_clock=document.getElementById('sic-clock');
+    if(sic_clock) sic_clock.textContent=HORAS[nextIdx].label.split('-')[0];
+    const sic_turno=document.getElementById('sic-turno');
+    if(sic_turno) sic_turno.textContent='TURNO A · HORA '+(horaAtual+1)+' / '+HORAS.length;
+
+    updateFrota(horaAtual);
+
+    const ntr=document.getElementById('tr-'+(horaAtual+1));
+    if(ntr && ntr.className==='sic-tr-future') ntr.className='sic-tr-active';
+
+    horaAtual++;
+    if(horaAtual>=HORAS.length){ stopSim(); return; }
+    stopCountdown();
+    startCountdown();
+  }
+
+  function startSim(){
+    if(horaAtual>=HORAS.length) return;
+    playing=true;
+    const icon=document.getElementById('btn-play-icon');
+    const lbl=document.getElementById('btn-play-label');
+    if(icon) icon.textContent='⏸';
+    if(lbl) lbl.textContent='PAUSAR';
+    step();
+    timer=setInterval(step,INTERVAL_MS);
+  }
+
+  function pauseSim(){
+    playing=false;
+    clearInterval(timer); timer=null;
+    stopCountdown();
+    const icon=document.getElementById('btn-play-icon');
+    const lbl=document.getElementById('btn-play-label');
+    if(icon) icon.textContent='▶';
+    if(lbl) lbl.textContent='CONTINUAR';
+  }
+
+  function stopSim(){
+    playing=false;
+    clearInterval(timer); timer=null;
+    stopCountdown();
+    const btn=document.getElementById('btn-play');
+    if(btn){
+      btn.style.background='var(--muted2)';
+      btn.style.cursor='default';
+      btn.onclick=null;
+    }
+    const icon=document.getElementById('btn-play-icon');
+    const lbl=document.getElementById('btn-play-label');
+    if(icon) icon.textContent='✔';
+    if(lbl) lbl.textContent='TURNO ENCERRADO';
+    const last=document.getElementById('tr-'+(horaAtual-1));
+    if(last) last.className='sic-tr-done';
+  }
+
+  window.simToggle=function(){
+    if(horaAtual>=HORAS.length) return;
+    playing ? pauseSim() : startSim();
+  };
+
+  window.simReset=function(){
+    clearInterval(timer); timer=null;
+    stopCountdown();
+    playing=false;
+    horaAtual=0; prodAcum=0; hemAcum=0; goeAcum=0;
+    const btn=document.getElementById('btn-play');
+    if(btn){ btn.style.background='var(--accent)'; btn.style.cursor='pointer'; btn.onclick=window.simToggle; }
+    const icon=document.getElementById('btn-play-icon');
+    const lbl=document.getElementById('btn-play-label');
+    if(icon) icon.textContent='▶';
+    if(lbl) lbl.textContent='INICIAR TURNO';
+    const prod=document.getElementById('v-prod'); if(prod) prod.textContent='0';
+    const ader=document.getElementById('v-ader'); if(ader){ ader.textContent='0%'; ader.style.color='var(--accent2)'; }
+    const df=document.getElementById('v-df'); if(df) df.textContent='91%';
+    const cam=document.getElementById('v-cam'); if(cam) cam.textContent='7 / 8';
+    const bar=document.getElementById('meta-bar'); if(bar){ bar.style.width='0%'; bar.style.background='linear-gradient(90deg,var(--accent),var(--accent2))'; }
+    const pct=document.getElementById('v-pct-label'); if(pct) pct.textContent='0% concluído';
+    const bh=document.getElementById('bar-hem'); if(bh) bh.style.width='0%';
+    const bg=document.getElementById('bar-goe'); if(bg) bg.style.width='0%';
+    const lh=document.getElementById('lbl-hem'); if(lh) lh.textContent='0 t';
+    const lg=document.getElementById('lbl-goe'); if(lg) lg.textContent='0 t';
+    const clk=document.getElementById('sic-clock'); if(clk) clk.textContent='07:00';
+    const trn=document.getElementById('sic-turno'); if(trn) trn.textContent='TURNO A · HORA 1 / 9';
+    const aw=document.getElementById('alertas-wrap');
+    if(aw) aw.innerHTML='<div data-init style="font-family:\'Share Tech Mono\',monospace;font-size:9px;color:var(--muted2);letter-spacing:1px">Nenhuma ocorrência registrada.</div>';
+    const estEl=document.getElementById('v-est'); if(estEl){ estEl.textContent='—'; estEl.style.color='var(--muted)'; }
+    const estU=document.getElementById('v-est-u'); if(estU){ estU.textContent='aguardando dados'; estU.style.color=''; }
+    const estMarker=document.getElementById('est-marker'); if(estMarker) estMarker.style.display='none';
+    const estTrend=document.getElementById('v-est-trend'); if(estTrend){ estTrend.style.display='none'; estTrend.textContent=''; }
+    buildTable();
+    buildFrota();
+  };
+
+  buildTable();
+  buildFrota();
+})();
+
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
 </body>
 </html>
