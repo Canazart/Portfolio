@@ -323,6 +323,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:22px 60px
     <a href="#experience">EXPERIÊNCIA</a>
     <a href="#project">PROJETO</a>
     <a href="#sic-demo" style="color:var(--accent)">DEMO SIC</a>
+    <a href="#kdd">KDD</a>
     <a href="#skills">COMPETÊNCIAS</a>
     <a href="#contact">CONTATO</a>
   </div>
@@ -607,6 +608,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:22px 60px
       </div>
     </div>
   </div>
+
 </section>
 
 <div class="divider"></div>
@@ -772,7 +774,100 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:22px 60px
   </div>
 </section>
 
-<!-- SIC STYLES -->
+<div class="divider"></div>
+
+<!-- ── PROJETO KDD ── -->
+<section class="section" id="kdd">
+  <div class="sec-label reveal">PROJETO EM DESENVOLVIMENTO</div>
+  <h2 class="sec-title reveal">Análise e Otimização <span>com Python</span></h2>
+
+  <div class="proj-card reveal" style="opacity:.93">
+    <div class="ca ca-tl"></div><div class="ca ca-tr"></div><div class="ca ca-bl"></div><div class="ca ca-br"></div>
+    <div style="position:absolute;top:20px;right:20px;font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:3px;padding:5px 12px;border:1px solid var(--yellow);border-radius:2px;color:var(--yellow);background:#dba52010;z-index:2">◐ EM DESENVOLVIMENTO</div>
+
+    <div style="padding:40px 48px">
+      <div class="proj-tech" style="color:var(--yellow)">⬡ &nbsp;PYTHON · KDD · DATA MINING</div>
+      <div class="proj-title">KDD Aplicado à Operação de Mina</div>
+      <div class="proj-sub" style="color:var(--yellow);opacity:.8">KNOWLEDGE DISCOVERY IN DATABASES · NOV 2025 · PRESENTE</div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:28px">
+
+        <!-- DESCRIÇÃO -->
+        <div>
+          <p class="proj-desc" style="margin-bottom:12px">
+            Projeto de análise operacional baseado no processo KDD (Knowledge Discovery in Databases), aplicado sobre dados históricos de despacho de mina. O objetivo central é automatizar a identificação de padrões ocultos na operação — ciclos anômalos de transporte, frentes com baixa produtividade recorrente, equipamentos com alta taxa de indisponibilidade não planejada — que passariam despercebidos em análises manuais.
+          </p>
+          <p class="proj-desc" style="margin-bottom:12px">
+            Cada padrão identificado é diretamente traduzido em impacto de custo operacional: tempo improdutivo de frota representa custo hora-máquina desperdiçado, gargalos no ciclo de carregamento reduzem a tonelagem por turno e aumentam o custo unitário de movimentação. O sistema estrutura esses diagnósticos de forma automatizada, eliminando a dependência de análise manual e permitindo respostas mais rápidas a desvios recorrentes.
+          </p>
+          <p class="proj-desc" style="margin-bottom:24px">
+            A evolução prevista inclui modelos preditivos capazes de antecipar quedas de produtividade antes que ocorram, com base em variáveis históricas como composição de frota, condições de turno e sequência de frentes lavradas.
+          </p>
+          <div class="proj-tags">
+            <span class="proj-tag" style="border-color:#dba52040;color:var(--yellow)">PYTHON</span>
+            <span class="proj-tag" style="border-color:#dba52040;color:var(--yellow)">KDD</span>
+            <span class="proj-tag" style="border-color:#dba52040;color:var(--yellow)">DATA MINING</span>
+            <span class="proj-tag" style="border-color:#dba52040;color:var(--yellow)">PADRÕES OPERACIONAIS</span>
+            <span class="proj-tag" style="border-color:#dba52040;color:var(--yellow)">ANÁLISE DE CUSTO</span>
+            <span class="proj-tag" style="border-color:#dba52040;color:var(--yellow)">MODELOS PREDITIVOS</span>
+            <span class="proj-tag" style="border-color:#dba52040;color:var(--yellow)">AUTOMAÇÃO DE DIAGNÓSTICOS</span>
+          </div>
+        </div>
+
+        <!-- ROADMAP + IMPACTOS -->
+        <div style="display:flex;flex-direction:column;gap:32px">
+
+          <!-- ROADMAP -->
+          <div>
+            <div style="font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:3px;color:var(--muted2);margin-bottom:14px">ROADMAP DO PROJETO</div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;align-items:center;gap:12px">
+                <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);flex-shrink:0"></div>
+                <div style="font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:1px;color:#bdd4c0">Coleta e estruturação de dados históricos</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px">
+                <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);flex-shrink:0"></div>
+                <div style="font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:1px;color:#bdd4c0">Pré-processamento e limpeza dos dados</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px">
+                <div style="width:8px;height:8px;border-radius:50%;background:var(--yellow);flex-shrink:0;animation:kdd-pulse 1.5s ease-in-out infinite"></div>
+                <div style="font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--yellow)">Mineração e identificação de padrões ← atual</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;opacity:.38">
+                <div style="width:8px;height:8px;border-radius:50%;border:1px solid var(--border2);flex-shrink:0"></div>
+                <div style="font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--muted2)">Modelos preditivos de produtividade</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;opacity:.38">
+                <div style="width:8px;height:8px;border-radius:50%;border:1px solid var(--border2);flex-shrink:0"></div>
+                <div style="font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--muted2)">Automação de diagnósticos operacionais</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- IMPACTOS ESPERADOS -->
+          <div>
+            <div style="font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:3px;color:var(--muted2);margin-bottom:14px">IMPACTOS ESPERADOS</div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="background:var(--panel2);border:1px solid var(--border);border-radius:3px;padding:10px 14px;border-left:2px solid var(--yellow)">
+                <div style="font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--yellow);margin-bottom:3px">REDUÇÃO DE CUSTO UNITÁRIO</div>
+                <div style="font-size:12px;color:#bdd4c0">Identificação de ciclos anômalos que elevam o custo hora-máquina por tonelagem movida</div>
+              </div>
+              <div style="background:var(--panel2);border:1px solid var(--border);border-radius:3px;padding:10px 14px;border-left:2px solid var(--yellow)">
+                <div style="font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--yellow);margin-bottom:3px">ELIMINAÇÃO DE GARGALOS RECORRENTES</div>
+                <div style="font-size:12px;color:#bdd4c0">Diagnóstico automático de frentes e equipamentos com padrões sistemáticos de baixo desempenho</div>
+              </div>
+              <div style="background:var(--panel2);border:1px solid var(--border);border-radius:3px;padding:10px 14px;border-left:2px solid var(--yellow)">
+                <div style="font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--yellow);margin-bottom:3px">ANTECIPAÇÃO DE DESVIOS</div>
+                <div style="font-size:12px;color:#bdd4c0">Modelos preditivos para antecipar quedas de produtividade antes que gerem impacto no resultado do turno</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <style>
 .sic-kpi{background:var(--panel2);padding:14px 12px;text-align:center}
 .sic-kpi-lbl{font-family:'Share Tech Mono',monospace;font-size:7px;letter-spacing:3px;color:var(--muted2);margin-bottom:4px}
@@ -790,6 +885,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:22px 60px
 .alerta-warn{font-family:'Share Tech Mono',monospace;font-size:9px;padding:6px 10px;background:#dba52010;border:1px solid #dba52040;border-radius:2px;color:var(--yellow);letter-spacing:1px}
 .alerta-bad{font-family:'Share Tech Mono',monospace;font-size:9px;padding:6px 10px;background:#e03e3e10;border:1px solid #e03e3e40;border-radius:2px;color:#e07070;letter-spacing:1px}
 @keyframes fadeInDown{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@keyframes kdd-pulse{0%,100%{box-shadow:0 0 4px var(--yellow)}50%{box-shadow:0 0 14px var(--yellow)}}
 </style>
 
 <div class="divider"></div>
@@ -871,9 +967,9 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:22px 60px
   <h2 class="contact-title reveal">Vamos conversar?</h2>
   <div class="contact-sub reveal">ENGENHARIA · CCO · SISTEMAS OPERACIONAIS</div>
   <div class="contact-links reveal">
-    <a class="contact-link" href="mailto:canazartleo@gmail.com">
+    <a class="contact-link" href="/cdn-cgi/l/email-protection#cfacaea1aeb5aebdbba3aaa08fa8a2aea6a3e1aca0a2">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
-      CANAZARTLEO@GMAIL.COM
+      <span class="__cf_email__" data-cfemail="91d2d0dfd0cbd0c3c5ddd4ded1d6dcd0d8ddbfd2dedc">[email&#160;protected]</span>
     </a>
     <a class="contact-link" href="tel:+5531996650183">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
@@ -897,7 +993,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:22px 60px
 </footer>
 
 <!-- ── SCRIPTS ── -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function(){
   const META = 3200;
   const INTERVAL_MS = 10000;
