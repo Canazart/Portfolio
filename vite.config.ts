@@ -8,10 +8,6 @@ export default defineConfig({
   base,
   build: {
     target: 'es2015',
-    rollupOptions: {
-      output: {
-        manualChunks: { vendor: ['react','react-dom'], charts: ['recharts'] }
-      }
-    }
   }
 })
+
