@@ -164,7 +164,7 @@ export default function SicDemo() {
         </div>
 
         {/* KPI STRIP */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: '1px', background: 'var(--border)', borderBottom: '1px solid var(--border)' }}>
+        <div className="sic-kpi-strip">
           <div className="sic-kpi">
             <div className="sic-kpi-lbl">PRODUÇÃO ACUM.</div>
             <div className="sic-kpi-val">{prodAcum.toLocaleString('pt-BR')}</div>
@@ -205,7 +205,7 @@ export default function SicDemo() {
         </div>
 
         {/* CORPO */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '0' }}>
+        <div className="sic-body">
           {/* TABELA E GRAFICO */}
           <div style={{ padding: '20px 24px', borderRight: '1px solid var(--border)', display: 'flex', flexDirection: 'column', gap: '20px' }}>
             
@@ -330,7 +330,7 @@ export default function SicDemo() {
         </div>
 
         {/* FOOTER CONTROLS */}
-        <div style={{ background: 'var(--bg-color)', borderTop: '1px solid var(--border)', padding: '12px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div className="sic-footer">
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <button onClick={toggleSim} style={{ fontFamily: "'Rajdhani', sans-serif", fontWeight: 600, fontSize: '13px', letterSpacing: '3px', padding: '10px 24px', background: horaAtual >= HORAS.length ? 'var(--muted2)' : 'var(--accent)', color: '#050c06', border: 'none', borderRadius: '2px', cursor: horaAtual >= HORAS.length ? 'default' : 'pointer', display: 'flex', alignItems: 'center', gap: '8px', transition: 'background .2s' }}>
               {horaAtual >= HORAS.length ? <><Square size={14} /> TURNO ENCERRADO</>
@@ -348,7 +348,7 @@ export default function SicDemo() {
               </div>
             )}
           </div>
-          <div style={{ fontFamily: "'Share Tech Mono', monospace", fontSize: '8px', letterSpacing: '2px', color: 'var(--muted2)' }}>● SIC SIMULADO · DADOS FICTÍCIOS · FINS DEMONSTRATIVOS</div>
+          <div className="sic-footer-note">● SIC SIMULADO · DADOS FICTÍCIOS</div>
         </div>
       </div>
     </section>
