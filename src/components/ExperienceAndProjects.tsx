@@ -129,7 +129,7 @@ export function KDD() {
           <div className="proj-title">KDD Aplicado à Operação de Mina</div>
           <div className="proj-sub" style={{ color: 'var(--accent)', opacity: .8 }}>KNOWLEDGE DISCOVERY IN DATABASES · NOV 2025 · PRESENTE</div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '56px', marginTop: '28px' }}>
+          <div className="kdd-inner-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '56px', marginTop: '28px' }}>
             <div>
               <p className="proj-desc" style={{ marginBottom: '12px' }}>Projeto de análise operacional baseado no processo KDD (Knowledge Discovery in Databases), aplicado sobre dados históricos de despacho de mina. O objetivo central é automatizar a identificação de padrões ocultos na operação · ciclos anômalos de transporte, frentes com baixa produtividade recorrente, equipamentos com alta taxa de indisponibilidade não planejada · que passariam despercebidos em análises manuais.</p>
               <p className="proj-desc" style={{ marginBottom: '12px' }}>Cada padrão identificado é diretamente traduzido em impacto de custo operacional: tempo improdutivo de frota representa custo hora-máquina desperdiçado, gargalos no ciclo de carregamento reduzem a tonelagem por turno e aumentam o custo unitário de movimentação. O sistema estrutura esses diagnósticos de forma automatizada, eliminando a dependência de análise manual e permitindo respostas mais rápidas a desvios recorrentes.</p>
