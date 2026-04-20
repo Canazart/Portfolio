@@ -121,6 +121,9 @@ nav {
 @keyframes float { 0%, 100% {transform: translateY(-50%) translateY(0)} 50% {transform: translateY(-50%) translateY(-22px)} }
 .cube-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 6px; color: var(--text-dark); text-align: center; }
 
+/* Mobile hex — hidden on desktop */
+.hero-hex-mobile { display: none; }
+
 /* ── SOL CARDS ── */
 .sol-grid, .comp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-bottom: 48px; background: var(--border-light); border: 1px solid var(--border-light); border-radius: 4px; overflow: hidden; }
 .sol-card, .comp-block { background: var(--panel-bg); padding: 44px; transition: background .3s ease; position: relative; overflow: hidden; }
@@ -287,6 +290,7 @@ footer { background: var(--bg-color); border-top: 1px solid var(--border-light);
   /* HERO */
   .hero { padding: 110px 24px 60px; min-height: auto; }
   .hero-cube { display: none; }
+  .hero-hex-mobile { display: flex; justify-content: center; margin-bottom: 20px; animation: float 6s ease-in-out infinite; }
   .hero-name { font-size: clamp(52px, 14vw, 80px); letter-spacing: -2px; }
   .hero-tagline { font-size: 15px; letter-spacing: 2px; }
   .hero-cards { flex-wrap: wrap; border-radius: 4px; }
